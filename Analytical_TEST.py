@@ -5,7 +5,6 @@ import network_bound
 import my_config
 import time
 
-#torch.manual_seed(3) #puedo cambiar la semilla para 3, 5, 32,21
 
 class MyNet(nn.Module):
 
@@ -39,11 +38,10 @@ b1=np.load('/home/xavier/Dropbox/00 Doctorado 2022/Semestre 1/b1.npy')
 b2=np.load('/home/xavier/Dropbox/00 Doctorado 2022/Semestre 1/b2.npy')
 w1=np.load('/home/xavier/Dropbox/00 Doctorado 2022/Semestre 1/w1.npy')
 w2=np.load('/home/xavier/Dropbox/00 Doctorado 2022/Semestre 1/w2.npy')
-#w2=w2.T
 x = np.load('/home/xavier/Dropbox/00 Doctorado 2022/Semestre 1/input.npy')
 dh = np.load('/home/xavier/Dropbox/00 Doctorado 2022/Semestre 1/dimo.npy')
 
-#x=np.random.rand(x.shape[0])*3.14 # solo para senoidal vectorial , comentar para la XOR
+#x=np.random.rand(x.shape[0])*3.14 # use for sin function
 
 d=len(x)
 # create network
@@ -52,11 +50,11 @@ net = MyNet()
 relu = torch.nn.ReLU(inplace=False)
 
 '''
-#modelo de una capa oculta
+#use for one hidden layer only
 net.layers = [net.fc1, relu,
               net.fc2, relu]
 '''
-#modelo de dos capas ocultas
+#use for tow hidden layers
 b3=np.load('/home/xavier/Dropbox/00 Doctorado 2022/Semestre 1/b3.npy')
 w3=np.load('/home/xavier/Dropbox/00 Doctorado 2022/Semestre 1/w3.npy')
 
@@ -73,7 +71,7 @@ net.fc3.bias = nn.Parameter(torch.Tensor(b3))
 # nominal input
 x0 = torch.Tensor(x)
 x0 = x0.to(my_config.device)
-net.to(my_config.device) #pasamos el moldelo a la gpu
+net.to(my_config.device) 
 
 # input perturbation size and batch size
 eps = 0.001
