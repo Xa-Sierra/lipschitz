@@ -272,27 +272,23 @@ w1=np.load('w1.npy')
 w2=np.load('w2.npy')
 x = np.load('input.npy')
 dimh=np.load('dimo.npy')
-x=np.random.rand(x.shape[0])*3.14  # solo para senoidal vectorial, comentar para la XOR o senoidal simple
+x=np.random.rand(x.shape[0])*3.14  # use for sinoidal function
 dim = len(x)
 
 '''
-#cMOdelo de una capa
+# one layer model
 ls=[dim,dimh,1]  #colocar el numero de neuronas ocultas de la XOR
 '''
 
-#modelo de dos capas
-ls=[dim,dimh,dimh,1]  #colocar el numero de neuronas ocultas de la XOR
+# two layers model
+ls=[dim,dimh,dimh,1]  #number of neurons
 
 b3=np.load('b3.npy')
 w3=np.load('w3.npy')
 
-
 L=len(ls)-1
-
 X=x.tolist()
 
-
-#print('\n estos son los valores de entrada \n', w1)
 weights,biases=[None],[None]
 
 weights.append(w1.tolist())
