@@ -129,6 +129,7 @@ execution_time = (time.time() - start_time)
 print('Execution time in seconds: ' + str(execution_time))
 LG=np.linalg.norm(w1,2) * np.linalg.norm(w2,2)*np.linalg.norm(w3,2)
 print('Final Global Lipschitz ',LG,'\n')
+
 '''
 def pred(x):
     ys=model(x)
@@ -166,6 +167,7 @@ lipo=np.array(lip)
 print(lipo)
 print("Exact = ",np.max(lipo))
 '''
+
 np.save('w1.npy',w1)
 np.save('w2.npy',w2)
 np.save('b1.npy',b1)
